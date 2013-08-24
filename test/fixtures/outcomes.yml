@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  month: 
+  year: 1
+  account_id: 1
+  telephone: 1
+  electricity: 1
+  gas: 1
+
+two:
+  month: 
+  year: 1
+  account_id: 1
+  telephone: 1
+  electricity: 1
+  gas: 1

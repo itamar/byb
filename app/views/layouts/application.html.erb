@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Byb" %></title>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application" %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+      .container .credit {
+        margin: 20px 0;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Balance your Budget</a>
+          <p class="navbar-text" style="float: right; margin: 0 10px;">  היחיד שעושה סדר בהוצאות המשפחתיות</p>
+          <div class="container nav-collapse">
+            <ul class="nav">
+              <% if user_signed_in? %>
+                <!-- <li>
+                  <%= link_to "הגדרות החשבון", "/users/#{current_user.id}/account" %>
+                </li> -->
+                <li class="divider-vertical"></li>
+                <li>
+                  <%= link_to "חברי המשפחה", user_account_members_path(current_user) %>
+                </li>
+                <li class="divider-vertical"></li>
+                <li>
+                  <%= link_to "בחירת מילות מפתח", user_account_keywords_path(current_user)  %>
+                </li>
+                <li class="divider-vertical"></li>
+                <li>
+                  <%= link_to "דוח\"ות", user_account_report_path(current_user)  %>
+                </li>
+                <% if user_signed_in? %>
+                  <li class="divider-vertical"></li>
+                  <li>
+                  <%= link_to('התנתק', destroy_user_session_path, :method => :delete) %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="container">
+          <h1 style="direction: rtl"><%= yield :page_title %></h1>
+          <div style="float: right"><%= yield :submenu %></div>
+          <div class="row" style="direction: rtl">
+            <div class="span12">
+              <%= bootstrap_flash %>
+              <%= yield :actions %>
+              <%= yield %>
+            </div>
+          </div><!--/row-->
+      </div> <!-- /container -->
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit"><b>Balance Your Budget</b> by Nitzan Sappir and Adi Gotthilf.
+        </p>
+      </div>
+    </div>
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+  </body>
+</html>

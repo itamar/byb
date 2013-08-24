@@ -1,0 +1,42 @@
+<div class="row" style="direction: rtl">
+  <div class="span11">
+    <form action="billing" method="post" class="form-horizontal" id="billingform" accept-charset="utf-8">
+      <div class="control-group">
+        <%= f.label :name, "שם מלא", class: 'control-label' %>
+        <div class="controls">
+            <%= f.text_field :name, id: 'name' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :date_of_birth, "תאריך לידה", class: 'control-label' %>
+        <div class="controls">
+            <%= f.date_select :date_of_birth, id: 'age' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :gender, "מין", class: 'control-label' %>
+        <div class="controls">
+          <%= f.select :gender, ['אישה','גבר'] %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :profession, "תעסוקה", class: 'control-label' %>
+        <div class="controls">
+            <%= f.text_field :profession, id: 'age' %>
+        </div>
+      </div>
+
+      <h2>הכנסות</h2>
+      <fieldset>
+        <%= f.fields_for :incomes do |i| %>
+          <%= render partial: 'income_fields' , locals: {f: i}%>
+        <% end %>
+        <%= link_to_add_fields "<i class='icon-plus'></i> הוסף הכנסה".html_safe, f, :incomes %>
+      </fieldset>
+ 
+      <div class="form-actions">
+        <button type="submit" class="btn btn-large btn-primary">שמור</button>
+      </div>
+    </form>
+  </div> <!-- .span8 -->
+</div>

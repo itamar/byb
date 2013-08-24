@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date_of_birth: 2013-07-26 16:35:58
+  : 
+  : 
+  gender: MyString
+
+two:
+  date_of_birth: 2013-07-26 16:35:58
+  : 
+  : 
+  gender: MyString

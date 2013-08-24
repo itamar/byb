@@ -1,0 +1,4 @@
+<h1>הוספת משתמש חדש</h1>
+<%= form_for [current_user,current_user.account, @member], html: {class: 'form-horizontal'} do |f| %>
+  <%= render partial: 'form' , locals: {f: f}%>
+<% end %>

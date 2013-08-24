@@ -1,0 +1,11 @@
+<%= content_for :page_title do %>הוספת מילת מפתח חדשה<% end %>
+
+<%= form_for [current_user, :account ,@keyword], html: {class: 'form-horizontal span6', style: 'direction: rtl;float: right'} do |f| %>
+  <div class="control-group">
+    <%= f.label :name, 'שם', class: "control-label"%>
+    <div class="controls">
+      <%= f.text_field :name, class: "input-block-level"%>
+    </div>
+  </div>
+<%= f.submit 'שמור',class: 'btn' %>
+<% end %>

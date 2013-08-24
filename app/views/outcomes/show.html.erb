@@ -1,0 +1,34 @@
+<%= content_for :submenu do %>
+  <% link_to 'קטגוריה חדשה', new_user_account_outcome_outcome_category_path(current_user), class: 'btn' %>
+<% end %>
+<%= content_for :page_title do %>
+  הוצאות משפחתיות
+<% end %>
+
+<div class="row">
+  <% @outcome.outcome_categories.each do |oc| %>
+    <div class="span6">
+      <table class="table table-striped table-condensed">
+        <thead>
+          <tr style="border: 2px solid lightgoldenrodyellow">
+            <th colspan="2">
+              <%= oc.name %>
+            </th>
+          </tr>
+          <tr>
+            <th>קטגוריה</th>
+            <th>ערך</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% oc.params.each do |param| %>
+            <tr>
+              <td><%= param.name %></td>
+              <td><%= param.value %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<%= content_for :page_title do %>
+  הוצאה חדשה
+<% end %>
+
+<%= form_for [current_user, :account ,:outcome, @outcome_category], html: {class: 'form-horizontal span6', style: 'direction: rtl;float: right'} do |f| %>
+
+  <%= render partial: 'form', locals: {f: f } %>
+  <br />
+  <%= f.submit 'שמור',class: 'btn' %>
+<% end %>
+
+<script type="text/javascript">
+
+</script>

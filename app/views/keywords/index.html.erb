@@ -1,0 +1,25 @@
+<%= content_for :page_title do %>מילות מפתח<% end %>
+<%= content_for :submenu do %>
+  <%= link_to "הוספת מילת מפתח חדשה", new_user_account_keyword_path(current_user) , class: 'btn'%>
+<% end %>
+
+<h5>בחר את מילות המפתח שמעניינות אותך ואת בני משפחתך:</h5>
+<div class="row" style="direction: rtl;">
+  <% @keywords.each_slice(4) do |keyword_list| %>
+    <div class="span3" style="float: right">
+      <% keyword_list.each do |keyword| %>
+        <p class="well">
+          <input class="keyword_check" type="checkbox" name="keyword_id" value="<%= keyword.id %>" style="margin: 2px 0" <%= "checked='checked'" if keyword.active? %> />
+          <%= keyword.name %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $('.keyword_check').on('click', function(){
+    $.get("/users/<%= current_user.id %>/account/keywords/check", { id: $(this).val(), checked: $(this).is(":checked")}
+      )
+  })
+</script>

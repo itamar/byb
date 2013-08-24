@@ -1,0 +1,74 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+html { 
+  background: url(/assets/sky-bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  background-color: transparent;
+}
+.navbar .brand {
+  float: right;
+}
+
+.alert {
+  text-align: right;
+}
+.alert .close{
+  right: -21px;
+  float: left;
+}
+
+.navbar .nav>li {
+  float: right
+}
+
+.heading {
+  direction: rtl;
+  text-align: right;
+}
+
+.form-heading {
+  text-decoration: underline;
+  text-align: center;
+}
+.signup-form .control-group label {
+  float: right;
+  text-align: left;
+}
+.signup-form .control-group .controls {
+  margin-left: 0;
+  margin-right: 180px;
+}
+
+.signup-form .control-group .controls input, .signup-form .control-group .controls select {
+  float:right;
+}
+
+.signup-form .checkbox input[type="checkbox"] {
+  margin-left: 10px
+}
+
+.signup-form .control-group .controls input[type=submit] {
+  float:left; 
+}
+
+.actions-area {
+  text-align: right
+}
+.table th, .table td {
+  text-align: center;
+}
+.form-horizontal .control-label {
+  float: right;
+}

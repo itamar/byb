@@ -1,0 +1,14 @@
+  <div class="control-group">
+    <%= f.label :amount, "הכנסה (נטו)", class: 'control-label' %>
+    <div class="controls">
+        <%= f.text_field :amount, id: 'income_amount' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :month, "נכון לחודש", class: 'control-label' %>
+    <div class="controls">
+        <%= f.select :month, (1..12), include_blank: true,  id: 'month' %>
+        <%= f.select :year, (2000..2013), include_blank: true, id: 'year' %>
+    </div>
+  </div>
+  <hr />

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  outcome_category_id: 1
+  name: MyString
+  value: 1
+
+two:
+  outcome_category_id: 1
+  name: MyString
+  value: 1

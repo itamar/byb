@@ -1,0 +1,38 @@
+<h1>Members</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>שם מלא</th>
+      <th>תעסוקה</th>
+      <th>תאריך לידה</th>
+      <th>מין</th>
+      <th>הכנסה</th>
+      <th>הכנסה נוספת</th>
+      <th>מחיקה</th>
+      <th>עריכה</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+        <td><%= member.name %></td>
+        <td><%= member.profession %></td>
+        <td><%= member.date_of_birth.strftime('%B %e, %Y') if member.date_of_birth %></td>
+        <td><%= member.gender %></td>
+        <td><%= member.income %></td>
+        <td><%= member.add_income %></td>
+        <td><%= link_to "<i class='icon-remove'></i>".html_safe, user_account_member_path(current_user,member, method: "delete") %></td>
+        <td><%= link_to "<i class='icon-edit'></i>".html_safe, edit_user_account_member_path(current_user,member) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for :actions do %>
+<div class="actions-area">
+
+</div>
+<% end %>

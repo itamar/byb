@@ -1,0 +1,30 @@
+<h2>New account</h2>
+
+<%= form_for Account.new do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.email_field :name, :autofocus => true %>
+  </div>
+
+  <table class="table table-striped table-condensed">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <%= 4.times do |i| %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= "Name #{i}" %></td>
+          <td><%= "Email #{i}" %></td>
+          <td><%= "Actions for #{i}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+
+  <div><%= f.submit "Submit", class: 'btn' %></div>
+<% end %>

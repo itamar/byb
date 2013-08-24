@@ -1,0 +1,100 @@
+<h1 style="direction: rtl;text-align: center;padding: 0 0 50px 0;">
+  ברוכים הבאים לאתר שיעשה לכם סדר בהוצאות המשפחתיות!
+</h1>
+<div class="container signup-form">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="span6 well">
+        <div class="area">
+          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+            <div class="heading">
+              <h3 class="form-heading">כניסה למערכת</h3>
+            </div>
+
+            <div class="control-group">
+              <%= f.label :email, "דואֿ\"ל", class: "control-label"%>
+              <div class="controls">
+                <%= f.email_field :email %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= f.label :password, "סיסמא", class: "control-label"%>
+              <div class="controls">
+                <%= f.password_field :password %>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <label class="checkbox">
+                <% if devise_mapping.rememberable? -%>
+                  <div><%= f.check_box :remember_me %> <%= f.label :remember_me, "זכור אותי" %></div>
+                <% end -%>
+                </label>
+                <button type="submit" class="btn btn-success">כניסה</button>
+                <button href="<%= new_password_path(resource_name) %>" type="button" class="btn"><i class='icon-key'></i> שכחתי סיסמא</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="span6 well">
+        <div class="area">
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+          <%= devise_error_messages! %>
+            <div class="heading">
+              <h3 class="form-heading">הרשמה ראשונית</h3>
+            </div>
+            <div class="control-group">
+              <%= f.label :email, class: "control-label" %>
+              <div class="controls">
+                <%= f.email_field :email, :autofocus => true %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :password, class: "control-label" %>
+              <div class="controls">
+                <%= f.password_field :password %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :password_confirmation, class: "control-label" %>
+              <div class="controls">
+                <%= f.password_field :password_confirmation %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :name, class: "control-label" %>
+              <div class="controls">
+                <%= f.text_field :name %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :profession, class: "control-label" %>
+              <div class="controls">
+                <%= f.text_field :profession %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :date_of_birth, class: "control-label" %>
+              <div class="controls">
+                <%= f.date_select :date_of_birth %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :gender, class: "control-label" %>
+              <div class="controls">
+                <%= f.select :gender, ['Male', 'Female']%>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn btn-success">הרשמה</button>
+              </div>
+            </div>
+          <% end %>
+        </div>                            
+      </div>
+    </div>
+  </div>
+</div>

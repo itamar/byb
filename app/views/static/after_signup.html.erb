@@ -1,0 +1,35 @@
+<div style="direction:rtl; text-align: right">
+  <h1>שלום <%= current_user.name.blank? ? 'משתמש חדש' : current_user.name%>,</h1>
+  <br />
+  <h3>מה ברצונך לעשות כעת ?</h3>
+</div>
+<div class="row" style="text-align: center">
+  <div class="span2"></div>
+  <div class="well span7">
+      <h3>
+        <a href="<%= new_user_account_member_path(current_user) %>">
+          הוספת משתמש משפחתי
+        </a>
+      </h3><small>(הוספת משתמש משפחתי תאפשר לך לקבל מידע מדוייק יותר על מצב ההוצאות)</small>
+  </div>
+</div>
+
+<div class="row" style="text-align: center">
+  <div class="span2"></div>
+  <div class="well span7"><h3>
+    <%= link_to "טבלת הוצאות משפחתיות", user_account_outcome_path(current_user) %>
+  </h3></div>
+</div>
+
+<div class="row" style="text-align: center">
+  <div class="span2"></div>
+  <div class="well span7">
+    <h3>
+      <%= link_to "בחירת תחומי עניין", user_account_keywords_path(current_user) %>
+    </h3></div>
+</div>
+
+<div class="row" style="text-align: center">
+<%= image_tag "balance.png" %>
+</div>
+
