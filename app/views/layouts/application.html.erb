@@ -90,9 +90,9 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <% if user_signed_in? %>
-                <!-- <li>
-                  <%= link_to "הגדרות החשבון", "/users/#{current_user.id}/account" %>
-                </li> -->
+                <li>
+                  <%= link_to "הוצאות משפחתיות", user_account_outcome_path(current_user) %>
+                </li>
                 <li class="divider-vertical"></li>
                 <li>
                   <%= link_to "חברי המשפחה", user_account_members_path(current_user) %>
@@ -122,7 +122,7 @@
       <div class="container">
           <h1 style="direction: rtl"><%= yield :page_title %></h1>
           <div style="float: right"><%= yield :submenu %></div>
-          <div class="row" style="direction: rtl">
+          <div class="row" style="<%= "direction: rtl" unless controller_name == "reports" %>">
             <div class="span12">
               <%= bootstrap_flash %>
               <%= yield :actions %>

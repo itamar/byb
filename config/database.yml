@@ -38,7 +38,7 @@ production:
   database: byb_production
   pool: 5
   username: root
-  password:
+  password: 
   host: localhost
 
 

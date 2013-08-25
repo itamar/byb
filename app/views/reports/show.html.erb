@@ -18,12 +18,14 @@
               text: 'כמות'
           }
       },
-      series: [{
-          name: 'הכנסה',
-          data: [1, 0, 4]
-      }, {
-          name: 'הוצאה',
-          data: [5, 7, 3]
+      series: [
+      {
+        name: 'הכנסה',
+        data: current_user.account.members.collect{ |m| m.incomes.collect(&:amount)}.flatten
+      },
+      {
+        name: 'הוצאה',
+        data: @params.collect{|pa| pa.param_datas.collect(&:month)}.flatten.uniq
       }]
     });
   });

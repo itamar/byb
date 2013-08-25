@@ -1,14 +1,14 @@
 require "rvm/capistrano"
 require 'bundler/capistrano'
 
-set :user, 'ubuntu'
+set :user, 'deploy'
 set :application, "byb"
 
 # server details
 set :deploy_to, "/home/#{user}/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
-# set :rvm_type, :system
+set :rvm_type, :system
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
@@ -18,7 +18,7 @@ set :repository,  "git@github.com:itamaryu/byb.git"
 set :branch, "master"
 set :git_enable_submodules, 1
 
-set :domain, "54.235.6.136"
+set :domain, "37.139.27.186"
 role :web, domain # Your HTTP server, Apache/etc
 role :app, domain # This may be the same as your `Web` server
 role :db, domain, :primary => true # This is where Rails migrations will run
@@ -31,7 +31,7 @@ role :db, domain, :primary => true # This is where Rails migrations will run
 # if you're still using the script/reapear helper you will need
 # these http://github.com/rails/irs_process_scripts
 
-# namespace :deploy do
+namespace :deploy do
 #   task :start do
 #     ;
 #   end
@@ -48,7 +48,7 @@ role :db, domain, :primary => true # This is where Rails migrations will run
 #         #{rake} RAILS_ENV=production db:seed
 #     CMD
 #   end
-# end
+end
 
 # namespace(:customs) do
 #   task :config, :roles => :app do
@@ -77,10 +77,10 @@ role :db, domain, :primary => true # This is where Rails migrations will run
 # # http://pastie.org/255489
 # # http://geminstallthat.wordpress.com/2008/01/27/rake-tasks-through-capistrano/
 # # http://ananelson.com/said/on/2007/12/30/remote-rake-tasks-with-capistrano/
-# def run_remote_rake(rake_cmd)
-#   rake_args = ENV['RAKE_ARGS'].to_s.split(',')
-#   cmd = "cd #{fetch(:latest_release)} && #{fetch(:rake, "rake")} RAILS_ENV=#{fetch(:rails_env, "production")} #{rake_cmd}"
-#   cmd += "['#{rake_args.join("','")}']" unless rake_args.empty?
-#   run cmd
-#   set :rakefile, nil if exists?(:rakefile)
-# end
+def run_remote_rake(rake_cmd)
+  rake_args = ENV['RAKE_ARGS'].to_s.split(',')
+  cmd = "cd #{fetch(:latest_release)} && #{fetch(:rake, "rake")} RAILS_ENV=#{fetch(:rails_env, "production")} #{rake_cmd}"
+  cmd += "['#{rake_args.join("','")}']" unless rake_args.empty?
+  run cmd
+  set :rakefile, nil if exists?(:rakefile)
+end
