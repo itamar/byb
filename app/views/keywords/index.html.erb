@@ -3,6 +3,12 @@
   <%= link_to "הוספת מילת מפתח חדשה", new_user_account_keyword_path(current_user) , class: 'btn'%>
 <% end %>
 
+<div class="row" style="direction: rtl;">
+  <p>
+    <input type="checkbox" checked="checked"> ברצוני לקבל עדכונים במייל
+  </p>
+</div>
+
 <h5>בחר את מילות המפתח שמעניינות אותך ואת בני משפחתך:</h5>
 <div class="row" style="direction: rtl;">
   <% @keywords.each_slice(4) do |keyword_list| %>

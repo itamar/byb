@@ -11,7 +11,7 @@
           text: 'דוח\"ות חודשיים'
       },
       xAxis: {
-          categories: ['01', '02', '03']
+          categories: ['01', '02', '03', '04', '05']
       },
       yAxis: {
           title: {
@@ -21,11 +21,11 @@
       series: [
       {
         name: 'הכנסה',
-        data: <%= current_user.account.members.collect{ |m| m.incomes.collect{|a| a.amount.to_i}}.flatten %>
+        data: [2,1,4,6,3]
       },
       {
         name: 'הוצאה',
-        data: <%= @params.collect{|pa| pa.param_datas.collect{|a| a.month.to_i}}.flatten.uniq %>
+        data: [5,7,3,8,2]
       }]
     });
   });
