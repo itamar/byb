@@ -46,43 +46,43 @@
               <h3 class="form-heading">הרשמה ראשונית</h3>
             </div>
             <div class="control-group">
-              <%= f.label :email, class: "control-label" %>
+              <%= f.label :email, "דוא\"ל", class: "control-label" %>
               <div class="controls">
                 <%= f.email_field :email, :autofocus => true %>
               </div>
             </div>
             <div class="control-group">
-              <%= f.label :password, class: "control-label" %>
+              <%= f.label :password, "סיסמא", class: "control-label" %>
               <div class="controls">
                 <%= f.password_field :password %>
               </div>
             </div>
             <div class="control-group">
-              <%= f.label :password_confirmation, class: "control-label" %>
+              <%= f.label :password_confirmation, "אימות סיסמא", class: "control-label" %>
               <div class="controls">
                 <%= f.password_field :password_confirmation %>
               </div>
             </div>
             <div class="control-group">
-              <%= f.label :name, class: "control-label" %>
+              <%= f.label :name, "שם", class: "control-label" %>
               <div class="controls">
                 <%= f.text_field :name %>
               </div>
             </div>
             <div class="control-group">
-              <%= f.label :profession, class: "control-label" %>
+              <%= f.label :profession, "תעסוקה", class: "control-label" %>
               <div class="controls">
                 <%= f.text_field :profession %>
               </div>
             </div>
             <div class="control-group">
-              <%= f.label :date_of_birth, class: "control-label" %>
+              <%= f.label :date_of_birth, "תאריך לידה", class: "control-label" %>
               <div class="controls">
-                <%= f.date_select :date_of_birth %>
+                <%= f.date_select :date_of_birth, start_year: 1948, end_year: 2013%>
               </div>
             </div>
             <div class="control-group">
-              <%= f.label :gender, class: "control-label" %>
+              <%= f.label :gender, "מין", class: "control-label" %>
               <div class="controls">
                 <%= f.select :gender, ['Male', 'Female']%>
               </div>

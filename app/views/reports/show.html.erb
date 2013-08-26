@@ -21,11 +21,11 @@
       series: [
       {
         name: 'הכנסה',
-        data: current_user.account.members.collect{ |m| m.incomes.collect(&:amount)}.flatten
+        data: <%= current_user.account.members.collect{ |m| m.incomes.collect{|a| a.amount.to_i}}.flatten %>
       },
       {
         name: 'הוצאה',
-        data: @params.collect{|pa| pa.param_datas.collect(&:month)}.flatten.uniq
+        data: <%= @params.collect{|pa| pa.param_datas.collect{|a| a.month.to_i}}.flatten.uniq %>
       }]
     });
   });
