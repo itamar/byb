@@ -1,5 +1,9 @@
-<div id="chart_container" style="width:100%; height:400px;"></div>
+<div style="direction: ltr;">
+  <div id="chart_container_2" style="width:100%; height:400px;"></div>
+  <div id="chart_container" style="width:100%; height:400px;"></div>
+</div>
 
+<%#= @param.param_datas.group_by(&:month).map(&:amount) %>
 
 <script type="text/javascript">
   $(function(){ 
@@ -8,10 +12,10 @@
           type: 'column'
       },
       title: {
-          text: 'דוח\"ות חודשיים'
+          text: 'דו\"ח קופונים'
       },
       xAxis: {
-          categories: ['01', '02', '03', '04', '05']
+          categories: <%= @coupons_data.map(&:month) %>
       },
       yAxis: {
           title: {
@@ -20,13 +24,41 @@
       },
       series: [
       {
-        name: 'הכנסה',
-        data: [2,1,4,6,3]
+        name: 'מחיר לאחר הנחה',
+        data: <%= @coupons_data.map(&:coupon_amount) %>
       },
       {
-        name: 'הוצאה',
-        data: [5,7,3,8,2]
+        name: 'מחיר מקורי',
+        data: <%= @coupons_data.map(&:normal_amount) %>
       }]
     });
   });
+
+      $(function(){ 
+        $('#chart_container_2').highcharts({
+          chart: {
+              type: 'column'
+          },
+          title: {
+              text: 'הוצאות מול הנכסות'
+          },
+          xAxis: {
+              categories: <%= current_user.account.members.map{|m| m.incomes.map(&:amount)}.flatten %>
+          },
+          yAxis: {
+              title: {
+                  text: 'כמות'
+              }
+          },
+          series: [
+          {
+            name: 'מחיר לאחר הנחה',
+            data: [12000,11350,12000,13200,14210]
+          },
+          {
+            name: 'מחיר מקורי',
+            data: [14000,14210,12000,13200,11350]
+          }]
+        });
+      });
 </script>

@@ -1,0 +1,27 @@
+<h1>מידע על קופונים</h1>
+
+<table>
+  <tr>
+    <th>חודש</th>
+    <th>סכום קופונים</th>
+    <th>סכום בפועל</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @coupons_data.each do |coupons_datum| %>
+  <tr>
+    <td><%= coupons_datum.month %></td>
+    <td><%= coupons_datum.coupon_amount %></td>
+    <td><%= coupons_datum.normal_amount %></td>
+    <td><%= link_to 'Show', coupons_datum %></td>
+    <td><%= link_to 'Edit', edit_coupons_datum_path(coupons_datum) %></td>
+    <td><%= link_to 'Destroy', coupons_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'מידע חדש', new_user_account_coupons_data_path(current_user) %>

@@ -2,7 +2,7 @@
 
 <%= form_for [current_user, :account ,@keyword], html: {class: 'form-horizontal span6', style: 'direction: rtl;float: right'} do |f| %>
   <div class="control-group">
-    <%= f.label :name, 'שם', class: "control-label"%>
+    <%= f.label :name, 'הכנס מילת מפתח', class: "control-label"%>
     <div class="controls">
       <%= f.text_field :name, class: "input-block-level"%>
     </div>

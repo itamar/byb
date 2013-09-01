@@ -1,0 +1,35 @@
+<div style="direction: ltr;">
+  <div id="chart_container" style="width:100%; height:400px;"></div>
+</div>
+
+<%#= @param.param_datas.group_by(&:month).map(&:amount) %>
+
+<script type="text/javascript">
+  $(function(){ 
+    $('#chart_container').highcharts({
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'הוצאות חודשיות - <%= @param.name %>'
+      },
+      xAxis: {
+          categories: <%= @param.param_datas.map(&:month) %>
+      },
+      yAxis: {
+          title: {
+              text: 'כמות'
+          }
+      },
+      series: [
+      {
+        name: 'הוצאה בפועל',
+        data: <%= @param.param_datas.map(&:amount) %>
+      },
+      {
+        name: 'הוצאה משוערת',
+        data: <%= @param.param_datas.map{|a| a.param.avg_cost} %>
+      }]
+    });
+  });
+</script>

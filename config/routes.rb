@@ -1,4 +1,7 @@
 Byb::Application.routes.draw do
+  resources :coupons_data
+
+
   get "accounts/new"
 
   get "accounts/edit"
@@ -9,16 +12,19 @@ Byb::Application.routes.draw do
   get "users/new"
   get "users/edit"
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :users do 
     resource :account do
       resource :outcome do
         resources :outcome_categories do
-          resources :params
+          resources :params do
+            get :report, on: :member
+          end
         end
       end
       resources :members
+      resources :coupons_datas
       resources :keywords do
         get :check, on: :collection
       end

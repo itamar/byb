@@ -11,4 +11,9 @@ class Member < ActiveRecord::Base
   def income
     incomes.to_a.sum{|a| a.amount.to_i }
   end
+
+  def avg_income
+    arr = incomes.to_a.collect{|a| a.amount.to_i }
+    avg = arr.inject{ |sum, el| sum + el }.to_f / arr.size
+  end
 end

@@ -1,0 +1,2 @@
+module CouponsDataHelper
+end

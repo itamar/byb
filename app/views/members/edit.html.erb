@@ -1,4 +1,4 @@
 <h1>עריכת משתמש</h1>
-<%= form_for [current_user,current_user.account, @member] do |f| %>
+<%= form_for [current_user,:account, @member] do |f| %>
   <%= render partial: 'form' , locals: {f: f}%>
 <% end %>

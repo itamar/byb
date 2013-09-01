@@ -4,13 +4,13 @@
       <div class="control-group">
         <%= f.label :name, "שם מלא", class: 'control-label' %>
         <div class="controls">
-            <%= f.text_field :name, id: 'name' %>
+            <%= f.text_field :name, id: 'name', required: true%>
         </div>
       </div>
       <div class="control-group">
         <%= f.label :date_of_birth, "תאריך לידה", class: 'control-label' %>
         <div class="controls">
-            <%= f.date_select :date_of_birth, id: 'age' %>
+            <%= f.date_select :date_of_birth, id: 'age', start_year: 1948, end_year: 2013 %>
         </div>
       </div>
       <div class="control-group">

@@ -1,0 +1,26 @@
+<h1>עריכה</h1>
+<%= form_for [current_user,:account, :outcome, @outcome_category, @param] do |f| %>
+  <div class="row" style="direction: rtl; float: right">
+    <div class="span4">
+      <form action="billing" method="post" class="form-horizontal" id="billingform" accept-charset="utf-8">
+        <div class="control-group">
+          <h2>קטגוריה: <%= @param.name %></h2>
+          <div class="control-group">
+            <%= f.label :avg_cost, "הוצאה משוערת", class: 'control-label' %>
+            <div class="controls">
+              <%= f.number_field :avg_cost, disabled: !@param.param_datas.blank? %>
+            </div>
+          </div>
+          <h3>הוצאות</h3>
+          <%= f.fields_for :param_datas do |pa| %>
+            <%= render partial: 'outcome_categories/param_fields' , locals: {f: f }%>
+          <% end %>
+          <%= link_to_add_fields "<h4>הוסף הוצאה</h4>".html_safe, f, :param_datas %>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-large btn-primary">שמור</button>
+        </div>
+      </form>
+    </div> <!-- .span8 -->
+  </div>
+<% end %>

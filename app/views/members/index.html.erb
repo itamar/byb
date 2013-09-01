@@ -1,4 +1,10 @@
+<%= content_for :submenu do %>
 <h1>חברי המשפחה</h1>
+<% end %>
+
+<%= content_for :submenu do %>
+<%= link_to "הוספת משתמש חדש", new_user_account_member_path(current_user) , class: 'btn', style: 'float: right; margin: 10px 0 20px '%>
+<% end %>
 
 <table class="table table-striped">
   <thead>
@@ -8,7 +14,7 @@
       <th>תעסוקה</th>
       <th>תאריך לידה</th>
       <th>מין</th>
-      <th>הכנסה</th>
+      <th>הכנסה ממוצעת</th>
       <th>מחיקה</th>
       <th>עריכה</th>
     </tr>
@@ -21,8 +27,8 @@
         <td><%= member.profession %></td>
         <td><%= member.date_of_birth.strftime('%B %e, %Y') if member.date_of_birth %></td>
         <td><%= member.gender %></td>
-        <td><%= member.income %></td>
-        <td><%= link_to "<i class='icon-remove'></i>".html_safe, user_account_member_path(current_user,member, method: "delete") %></td>
+        <td><%= member.avg_income %></td>
+        <td><%= link_to "<i class='icon-remove'></i>".html_safe, user_account_member_path(current_user,member, method: "delete"), confirm: 'האם אתה בטוח שברצונך למחוק?' %></td>
         <td><%= link_to "<i class='icon-edit'></i>".html_safe, edit_user_account_member_path(current_user,member) %></td>
       </tr>
     <% end %>

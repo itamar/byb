@@ -1,0 +1,29 @@
+<%= form_for(@coupons_datum, url: user_account_coupons_datas_path(current_user)) do |f| %>
+  <% if @coupons_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coupons_datum.errors.count, "error") %> prohibited this coupons_datum from being saved:</h2>
+
+      <ul>
+      <% @coupons_datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :month, 'חודש'%><br />
+    <%= f.select :month, [["ינואר", 1],["פברואר", 2],["מרץ", 3],["אפריל", 4],["מאי", 5],["יוני", 6],["יולי", 7],["אוגוסט", 8],["ספטמבר", 9],["אוקטובר", 10],["נובמבר", 11],["דצמבר", 12]] %>
+  </div>
+  <div class="field">
+    <%= f.label :coupon_amount, 'עלות קופונים' %><br />
+    <%= f.number_field :coupon_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :normal_amount, 'עלות בפועל'%><br />
+    <%= f.number_field :normal_amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'שמור', class: 'btn' %>
+  </div>
+<% end %>

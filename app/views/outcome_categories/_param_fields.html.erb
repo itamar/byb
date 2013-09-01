@@ -6,10 +6,10 @@
 </div>
 
 <%= f.fields_for :param_datas do |pd| %>
-  <%= render partial: 'param_data_fields' , locals: {f: pd}%>
+  <%= render partial: 'outcome_categories/param_data_fields' , locals: {f: pd}%>
 <% end %>
 <%= link_to_add_fields "הוסף הוצאה", f, :param_datas %>
 
-<%= f.hidden_field :_destroy %>
+<%#= f.hidden_field :_destroy %>
 <%= link_to "remove", '#', class: "remove_fields" %>
 <hr />

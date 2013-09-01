@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     '/static/after_signup'
   end
 
+  def after_sign_up_path_for(resource)
+    '/static/after_signup?show_pre=true'
+  end
+
 end

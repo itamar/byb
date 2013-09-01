@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Month:</b>
+  <%= @coupons_datum.month %>
+</p>
+
+<p>
+  <b>Coupon amount:</b>
+  <%= @coupons_datum.coupon_amount %>
+</p>
+
+<p>
+  <b>Normal amount:</b>
+  <%= @coupons_datum.normal_amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_coupons_datum_path(@coupons_datum) %> |
+<%= link_to 'Back', coupons_data_path %>

@@ -11,12 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130824123549) do
+ActiveRecord::Schema.define(:version => 20130901195056) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "coupons_data", :force => true do |t|
+    t.integer  "month"
+    t.integer  "coupon_amount"
+    t.integer  "normal_amount"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "account_id"
   end
 
   create_table "incomes", :force => true do |t|
@@ -81,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20130824123549) do
     t.integer  "value"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "avg_cost"
   end
 
   create_table "users", :force => true do |t|

@@ -1,6 +1,6 @@
 <%= content_for :page_title do %>מילות מפתח<% end %>
 <%= content_for :submenu do %>
-  <%= link_to "הוספת מילת מפתח חדשה", new_user_account_keyword_path(current_user) , class: 'btn'%>
+  <%= link_to "הוספת מילת מפתח חדשה", new_user_account_keyword_path(current_user) , class: 'btn', style: 'margin: 10px 0 20px;'%>
 <% end %>
 
 <div class="row" style="direction: rtl;">
@@ -11,14 +11,13 @@
 
 <h5>בחר את מילות המפתח שמעניינות אותך ואת בני משפחתך:</h5>
 <div class="row" style="direction: rtl;">
-  <% @keywords.each_slice(4) do |keyword_list| %>
+  <% @keywords.each do |keyword| %>
     <div class="span3" style="float: right">
-      <% keyword_list.each do |keyword| %>
         <p class="well">
           <input class="keyword_check" type="checkbox" name="keyword_id" value="<%= keyword.id %>" style="margin: 2px 0" <%= "checked='checked'" if keyword.active? %> />
           <%= keyword.name %>
+          <%= link_to "<i class='icon-trash'></i>".html_safe, user_account_keyword_path(current_user, keyword), method: "DELETE", confirm: 'האם אתה בטוח כי ברצונך למחוק מילה זו ?', style: 'float: left;'%>
         </p>
-      <% end %>
     </div>
   <% end %>
 </div>
