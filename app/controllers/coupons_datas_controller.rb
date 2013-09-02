@@ -36,6 +36,7 @@ class CouponsDatasController < ApplicationController
   # GET /coupons_data/1/edit
   def edit
     @coupons_datum = current_user.account.coupons_data.find(params[:id])
+    @coupons_data = current_user.account.coupons_data.find(params[:id])
   end
 
   # POST /coupons_data
@@ -57,15 +58,15 @@ class CouponsDatasController < ApplicationController
   # PUT /coupons_data/1
   # PUT /coupons_data/1.json
   def update
-    @coupons_datum = current_user.account.coupons_data.find(params[:id])
+    @coupons_data = current_user.account.coupons_data.find(params[:id])
 
     respond_to do |format|
-      if @coupons_datum.update_attributes(params[:coupons_datum])
-        format.html { redirect_to @coupons_datum, notice: 'Coupons datum was successfully updated.' }
+      if @coupons_data.update_attributes(params[:coupons_datum])
+        format.html { redirect_to @coupons_data, notice: 'Coupons datum was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @coupons_datum.errors, status: :unprocessable_entity }
+        format.json { render json: @coupons_data.errors, status: :unprocessable_entity }
       end
     end
   end
