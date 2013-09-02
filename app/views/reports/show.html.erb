@@ -43,7 +43,7 @@
               text: 'הוצאות מול הנכסות'
           },
           xAxis: {
-              categories: <%= current_user.account.members.map{|m| m.incomes.map(&:amount)}.flatten %>
+              categories: <%= current_user.account.members.map{|m| m.incomes.map{|a| a.amount.to_i }}.flatten %>
           },
           yAxis: {
               title: {
