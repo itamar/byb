@@ -6,33 +6,63 @@
   <% end %>
   <h3>מה ברצונך לעשות כעת ?</h3>
 </div>
-<div class="row" style="text-align: center">
-  <div class="span2"></div>
-  <div class="well span7">
-      <h3>
-        <a href="<%= new_user_account_member_path(current_user) %>">
-          1. הוספת משתמש משפחתי
-        </a>
-      </h3><small>(הוספת משתמש משפחתי תאפשר לך לקבל מידע מדוייק יותר על מצב ההוצאות)</small>
-  </div>
-</div>
+  <% if params[:other] == "true" %>
+    <div class="row" style="text-align: center">
+      <div class="span2"></div>
+      <div class="well span7">
+          <h3>
+            <%= link_to "עדכון הוצאות", user_account_outcome_path(current_user) %>
+          </h3>
+      </div>
+    </div>
 
-<div class="row" style="text-align: center">
-  <div class="span2"></div>
-  <div class="well span7"><h3>
-    <%= link_to "2. טבלת הוצאות משוערת", user_account_outcome_path(current_user) %>
-  </h3></div>
-</div>
+    <div class="row" style="text-align: center">
+      <div class="span2"></div>
+      <div class="well span7">
+        <h3>
+          <%= link_to "צפייה בדוחו\"ות", user_account_report_path(current_user) %>
+      </h3></div>
+    </div>
 
-<div class="row" style="text-align: center">
-  <div class="span2"></div>
-  <div class="well span7">
-    <h3>
-      <%= link_to "3. בחירת תחומי עניין", user_account_keywords_path(current_user) %>
-    </h3></div>
-</div>
+    <div class="row" style="text-align: center">
+      <div class="span2"></div>
+      <div class="well span7">
+        <h3>
+          <%= link_to "בחירת תחומי עניין", user_account_keywords_path(current_user) %>
+        </h3></div>
+    </div>
 
-<div class="row" style="text-align: center">
-<%= image_tag "balance.png" %>
-</div>
+    <div class="row" style="text-align: center">
+    <%= image_tag "balance.png" %>
+    </div>
+  <% else %>
+      <div class="row" style="text-align: center">
+      <div class="span2"></div>
+        <div class="well span7">
+            <h3>
+              <a href="<%= new_user_account_member_path(current_user) %>">
+                1. הוספת משתמש משפחתי
+              </a>
+            </h3><small>(הוספת משתמש משפחתי תאפשר לך לקבל מידע מדוייק יותר על מצב ההוצאות)</small>
+        </div>
+      </div>
 
+      <div class="row" style="text-align: center">
+        <div class="span2"></div>
+        <div class="well span7"><h3>
+          <%= link_to "2. טבלת הוצאות משוערת", user_account_outcome_path(current_user) %>
+        </h3></div>
+      </div>
+
+      <div class="row" style="text-align: center">
+        <div class="span2"></div>
+        <div class="well span7">
+          <h3>
+            <%= link_to "3. בחירת תחומי עניין", user_account_keywords_path(current_user) %>
+          </h3></div>
+      </div>
+
+      <div class="row" style="text-align: center">
+      <%= image_tag "balance.png" %>
+      </div>
+    <% end %>

@@ -22,7 +22,7 @@ class ParamsController < ApplicationController
   def report
     @outcome_category = current_user.account.outcome.outcome_categories.find(params[:outcome_category_id])
     @param = @outcome_category.params.find(params[:id])
-    
+    @coupons_data = current_user.account.coupons_data.all
   end
 
 end

@@ -8,4 +8,8 @@ class AccountsController < ApplicationController
   def index
     
   end
+
+  def report
+    @coupons_data = current_user.account.coupons_data.all
+  end
 end
